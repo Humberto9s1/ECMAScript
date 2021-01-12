@@ -6,8 +6,26 @@
 
         <script type="text/babel">
         
-            
+        function* baterNoLiquidificador(ing) {
+                for (var i = 0; i < ing.lenght; i++) {
+                    yield ing[i];
+                }
+            }    
 
+            var ingredientes = baterNoLiquidificador(["Leite","Banana","Nescau","Aveia"]);
+           
+            var fazerVitamina = setInterval( function() {
+
+                var vitamina = ingredientes.next();
+                if (vitamina.done) {
+                    clearInterval(fazerVitamina);
+                    console.log("Acabou, sua vitamina está pronta.");
+                } else {
+                    console.log(vitamina.value);
+                }
+
+            }, 2000)
+            
         </script>
     </head>
     <body>
